@@ -3,7 +3,7 @@ import React from 'react';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
 
-import { signInWithGoogle } from '../../utils/firebase';
+import { auth, signInWithGoogle } from '../../utils/firebase';
 import useFormState from '../../utils/useFormState';
 
 import './SignIn.scss';
@@ -12,9 +12,16 @@ const SignIn = () => {
   const fields = ['email', 'password'];
   const [formState, handleChange, clearForm] = useFormState(fields);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    clearForm();
+    const { email, password } = formState;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      clearForm();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

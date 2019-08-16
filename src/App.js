@@ -33,10 +33,6 @@ function App() {
     };
   }, [auth.onAuthStateChanged]);
 
-  React.useEffect(() => {
-    console.log({ currentUser });
-  }, [currentUser]);
-
   return (
     <div>
       <Header currentUser={currentUser} />
