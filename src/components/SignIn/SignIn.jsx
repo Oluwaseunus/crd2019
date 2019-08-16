@@ -4,21 +4,17 @@ import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
 
 import { signInWithGoogle } from '../../utils/firebase';
+import useFormState from '../../utils/useFormState';
 
 import './SignIn.scss';
 
 const SignIn = () => {
-  const initialState = { email: '', password: '' };
-  const [formState, setFormState] = React.useState(initialState);
+  const fields = ['email', 'password'];
+  const [formState, handleChange, clearForm] = useFormState(fields);
 
   const handleSubmit = e => {
     e.preventDefault();
-    setFormState(initialState);
-  };
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFormState({ ...formState, [name]: value });
+    clearForm();
   };
 
   return (
