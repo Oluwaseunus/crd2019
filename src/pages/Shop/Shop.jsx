@@ -3,7 +3,7 @@ import shopData from './shop-data';
 import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
 
 const ShopPage = () => {
-  const [collections, setCollections] = React.useState(shopData);
+  const [collections] = React.useState(shopData);
 
   return (
     <div className='shop-page'>

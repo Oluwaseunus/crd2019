@@ -5,7 +5,7 @@ import { initialSections } from './helpers';
 import './Directory.scss';
 
 const Directory = () => {
-  const [sections, setSections] = React.useState(initialSections);
+  const [sections] = React.useState(initialSections);
 
   return (
     <div className='directory-menu'>
